@@ -89,21 +89,7 @@ namespace DynamicStructuresLab
 
         public void Print(string separator = " ")
         {
-            Node<T>? current = first;
-
-            while (current != null)
-            {
-                if (current.Next == null)
-                {
-                    Console.Write(current.Data);
-                    break;
-                }
-
-                Console.Write(current.Data + separator);
-                current = current.Next;
-            }
-
-            Console.WriteLine();
+            Console.WriteLine(String.Join<T>(separator, this));
         }
 
         public IEnumerator<T> GetEnumerator()
