@@ -80,6 +80,22 @@ namespace DynamicStructuresLab
             return false;
         }
 
+        public void Flip()
+        {
+            Node<T>? previous = null;
+            Node<T>? current = first;
+
+            while (current != null)
+            {
+                Node<T>? next = current.Next;
+                current.Next = previous;
+                previous = current;
+                current = next;
+            }
+
+            first = previous;
+        }
+
         public void Clear()
         {
             first = null;
