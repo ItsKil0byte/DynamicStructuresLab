@@ -323,6 +323,25 @@ namespace DynamicStructuresLab
             return result;
         }
 
+        public void Duplicate()
+        {
+            if (first == null)
+            {
+                return;
+            }
+
+            CustomLinkedList<T> duplicated = [];
+
+            foreach(T data in this)
+            {
+                duplicated.Add(data);
+            }
+
+            last!.Next = duplicated.first;
+            last = duplicated.last;
+            count += duplicated.count;
+        }
+
         public void Clear()
         {
             first = null;
