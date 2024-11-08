@@ -342,6 +342,58 @@ namespace DynamicStructuresLab
             count += duplicated.count;
         }
 
+        public bool Swap(T firstData, T secondData)
+        {
+            if (first == null || firstData!.Equals(secondData))
+            {
+                return false;
+            }
+
+            Node<T>? firstCurrent = first, secondCurrent = first;
+            Node<T>? firstPrevious = null, secondPrevious = null;
+
+            while (firstCurrent != null && !firstCurrent.Data!.Equals(firstData))
+            {
+                firstPrevious = firstCurrent;
+                firstCurrent = firstCurrent.Next;
+            }
+
+            while (secondCurrent != null && !secondCurrent.Data!.Equals(secondData))
+            {
+                secondPrevious = secondCurrent;
+                secondCurrent = secondCurrent.Next;
+            }
+
+            if (firstCurrent == null || secondCurrent == null)
+            {
+                return false;
+            }
+
+            if (firstPrevious != null)
+            {
+                firstPrevious.Next = secondCurrent;
+            }
+            else
+            {
+                first = secondCurrent;
+            }
+
+            if (secondPrevious != null)
+            {
+                secondPrevious.Next = firstCurrent;
+            }
+            else
+            {
+                first = firstCurrent;
+            }
+
+            Node<T> node = firstCurrent.Next!;
+            firstCurrent.Next = secondCurrent.Next;
+            secondCurrent.Next = node;
+
+            return true;
+        }
+
         public void Clear()
         {
             first = null;
