@@ -216,6 +216,40 @@ namespace DynamicStructuresLab
             return isRemoved;
         }
 
+        public bool AddBefore(T target, T data)
+        {
+            Node<T>? current = first;
+            Node<T>? previous = null;
+
+            while (current != null)
+            {
+                if (current.Data!.Equals(target))
+                {
+                    Node<T> node = new(data)
+                    {
+                        Next = current
+                    };
+
+                    if (previous == null)
+                    {
+                        first = node;
+                    }
+                    else
+                    {
+                        previous.Next = node;
+                    }
+
+                    count++;
+                    return true;
+                }
+
+                previous = current;
+                current = current.Next;
+            }
+
+            return false;
+        }
+
         public void Clear()
         {
             first = null;
