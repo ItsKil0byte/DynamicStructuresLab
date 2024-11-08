@@ -153,6 +153,35 @@ namespace DynamicStructuresLab
             return count;
         }
 
+        public void RemoveNonUnique()
+        {
+            // Опять O(n^2)
+
+            Node<T>? current = first;
+
+            while (current != null)
+            {
+                Node<T> previous = current;
+                Node<T>? checker = current.Next;
+
+                while (checker != null)
+                {
+                    if (checker.Data!.Equals(current.Data))
+                    {
+                        previous.Next = checker.Next;
+                    }
+                    else
+                    {
+                        previous = checker;
+                    }
+
+                    checker = checker.Next;
+                }
+
+                current = current.Next;
+            }
+        }
+
         public void Clear()
         {
             first = null;
