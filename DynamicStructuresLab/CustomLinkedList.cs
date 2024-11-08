@@ -119,6 +119,40 @@ namespace DynamicStructuresLab
             first = last;
         }
 
+        public int CountUnique()
+        {
+            // NOTE: Возможно стоит его переписать, потому что в текущем варианте сложность целых O(n^2)
+
+            int count = 0;
+            Node<T>? current = first;
+
+            while (current != null)
+            {
+                bool isUnique = true;
+                Node<T>? checker = first;
+
+                while (checker != current)
+                {
+                    if (checker!.Data!.Equals(current.Data))
+                    {
+                        isUnique = false;
+                        break;
+                    }
+
+                    checker = checker.Next;
+                }
+
+                if (isUnique)
+                {
+                    count++;
+                }
+
+                current = current.Next;
+            }
+
+            return count;
+        }
+
         public void Clear()
         {
             first = null;
