@@ -250,6 +250,27 @@ namespace DynamicStructuresLab
             return false;
         }
 
+        public void AddLinkedList(CustomLinkedList<T> list)
+        {
+            if (list.first == null)
+            {
+                return;
+            }
+
+            if (first == null)
+            {
+                first = list.first;
+                last = list.last;
+            }
+            else
+            {
+                last!.Next = list.first;
+                last = list.last;
+            }
+
+            count += list.count;
+        }
+
         public void Clear()
         {
             first = null;
