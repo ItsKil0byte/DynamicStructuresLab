@@ -271,6 +271,58 @@ namespace DynamicStructuresLab
             count += list.count;
         }
 
+        public CustomLinkedList<T> Split(T target)
+        {
+            Node<T>? current = first;
+            Node<T>? previous = null;
+            CustomLinkedList<T> result = [];
+            int count = 1;
+
+            while (current != null)
+            {
+                if (current.Data!.Equals(target))
+                {
+                    if (count == 1)
+                    {
+                        result.first = current;
+                        result.last = last;
+
+                        first = null;
+                        last = null;
+
+                        result.count = this.count;
+                        this.count = 0;
+
+                        break;
+                    }
+
+                    result.first = current;
+
+                    if (previous != null)
+                    {
+                        previous.Next = null;
+                        result.last = last;
+                        last = previous;
+                    }
+                    else
+                    {
+                        result.last = current;
+                    }
+
+                    result.count = count;
+                    this.count -= count;
+
+                    break;
+                }
+
+                previous = current;
+                current = current.Next;
+                count++;
+            }
+
+            return result;
+        }
+
         public void Clear()
         {
             first = null;
