@@ -96,6 +96,29 @@ namespace DynamicStructuresLab
             first = previous;
         }
 
+        public void Swap()
+        {
+            if (first == null || first.Next == null)
+            {
+                return;
+            }
+
+            Node<T> last = first;
+            Node<T>? nextToLast = null;
+            Node<T> second = first.Next;
+
+            while (last.Next != null)
+            {
+                nextToLast = last;
+                last = last.Next;
+            }
+
+            nextToLast!.Next = first;
+            last.Next = second;
+            first.Next = null;
+            first = last;
+        }
+
         public void Clear()
         {
             first = null;
