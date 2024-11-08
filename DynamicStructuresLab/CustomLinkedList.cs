@@ -46,9 +46,9 @@ namespace DynamicStructuresLab
             Node<T>? current = first;
             Node<T>? previous = null;
 
-            while (current != null && current.Data != null)
+            while (current != null)
             {
-                if (current.Data.Equals(data))
+                if (current.Data!.Equals(data))
                 {
                     if (previous != null)
                     {
@@ -169,6 +169,7 @@ namespace DynamicStructuresLab
                     if (checker.Data!.Equals(current.Data))
                     {
                         previous.Next = checker.Next;
+                        count--;
                     }
                     else
                     {
@@ -180,6 +181,39 @@ namespace DynamicStructuresLab
 
                 current = current.Next;
             }
+        }
+
+        public bool RemoveAll(T data)
+        {
+            Node<T>? current = first;
+            Node<T>? previous = null;
+            bool isRemoved = false;
+
+            while (current != null)
+            {
+                if (current.Data!.Equals(data))
+                {
+                    if (previous == null)
+                    {
+                        first = current.Next;
+                    }
+                    else
+                    {
+                        previous.Next = current.Next;
+                    }
+
+                    isRemoved = true;
+                    count--;
+                }
+                else
+                {
+                    previous = current;
+                }
+
+                current = current.Next;
+            }
+
+            return isRemoved;
         }
 
         public void Clear()
