@@ -219,6 +219,15 @@ namespace DynamicStructuresLab
                 current = current.Next;
             }
 
+            if (previous == null)
+            {
+                last = null;
+            }
+            else if (previous.Next == null)
+            {
+                last = previous;
+            }
+
             return isRemoved;
         }
 
