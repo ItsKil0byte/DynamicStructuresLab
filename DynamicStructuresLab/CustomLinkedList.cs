@@ -82,8 +82,14 @@ namespace DynamicStructuresLab
 
         public void Flip()
         {
+            if (count <= 1)
+            {
+                return;
+            }
+
             Node<T>? previous = null;
             Node<T>? current = first;
+            last = first;
 
             while (current != null)
             {
