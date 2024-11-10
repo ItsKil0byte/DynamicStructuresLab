@@ -394,6 +394,40 @@ namespace DynamicStructuresLab
             return true;
         }
 
+        public bool DuplicateAfter(T target)
+        {
+            Node<T>? current = first;
+            CustomLinkedList<T> duplicated = [];
+
+            foreach (T data in this)
+            {
+                duplicated.Add(data);
+            }
+
+            while (current != null)
+            {
+                if (current.Data!.Equals(target))
+                {
+                    Node<T>? node = current.Next;
+                    current.Next = duplicated.first;
+                    duplicated.last!.Next = node;
+
+                    if (current == last)
+                    {
+                        last = duplicated.last;
+                    }
+
+                    count += duplicated.count;
+
+                    return true;
+                }
+
+                current = current.Next;
+            }
+
+            return false;
+        }
+
         public void Clear()
         {
             first = null;
