@@ -428,6 +428,33 @@ namespace DynamicStructuresLab
             return false;
         }
 
+        public void AddInOrder(T data)
+        {
+            if (first == null || ((IComparable<T>)data!).CompareTo(first.Data) <= 0)
+            {
+                AddFirst(data);
+                return;
+            }
+
+            Node<T> node = new(data);
+            Node<T> current = first;
+
+            while (current.Next != null && ((IComparable<T>)current.Next.Data!).CompareTo(data) < 0)
+            {
+                current = current.Next;
+            }
+
+            node.Next = current.Next;
+            current.Next = node;
+
+            if (node.Next == null)
+            {
+                last = node;
+            }
+
+            count++;
+        }
+
         public void Clear()
         {
             first = null;
