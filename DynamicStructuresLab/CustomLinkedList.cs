@@ -405,15 +405,15 @@ namespace DynamicStructuresLab
             Node<T>? current = first;
             CustomLinkedList<T> duplicated = [];
 
-            foreach (T data in this)
-            {
-                duplicated.Add(data);
-            }
-
             while (current != null)
             {
                 if (current.Data!.Equals(target))
                 {
+                    foreach (T data in this)
+                    {
+                        duplicated.Add(data);
+                    }
+
                     Node<T>? node = current.Next;
                     current.Next = duplicated.first;
                     duplicated.last!.Next = node;
