@@ -406,6 +406,15 @@ namespace DynamicStructuresLab
             firstCurrent.Next = secondCurrent.Next;
             secondCurrent.Next = node;
 
+            if (firstCurrent.Next == null)
+            {
+                last = firstCurrent;
+            }
+            else if (secondCurrent.Next == null)
+            {
+                last = secondCurrent;
+            }
+
             return true;
         }
 
