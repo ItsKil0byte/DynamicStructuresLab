@@ -9,6 +9,7 @@ namespace DynamicStructuresLab
         private int count;
 
         public int Count { get { return count; } }
+        public bool IsEmpty { get { return count == 0; } }
 
         public void Add(T data)
         {
@@ -102,27 +103,39 @@ namespace DynamicStructuresLab
             first = previous;
         }
 
-        public void Swap()
+        public void MoveLastToFirst()
         {
             if (first == null || first.Next == null)
             {
                 return;
             }
 
-            Node<T> last = first;
-            Node<T>? nextToLast = null;
-            Node<T> second = first.Next;
+            Node<T>? nextToLast = first;
 
-            while (last.Next != null)
+            while (nextToLast!.Next != last)
             {
-                nextToLast = last;
-                last = last.Next;
+                nextToLast = nextToLast.Next;
             }
 
-            nextToLast!.Next = first;
-            last.Next = second;
-            first.Next = null;
+            last!.Next = first;
             first = last;
+            nextToLast!.Next = null;
+            last = nextToLast;
+        }
+
+        public void MoveFirstToLast()
+        {
+            if (first == null || first.Next == null)
+            {
+                return;
+            }
+
+            Node<T> node = first;
+            first = first.Next;
+
+            last!.Next = node;
+            last = node;
+            last.Next = null;
         }
 
         public int CountUnique()
