@@ -82,8 +82,14 @@ namespace DynamicStructuresLab
 
         public void Flip()
         {
+            if (count <= 1)
+            {
+                return;
+            }
+
             Node<T>? previous = null;
             Node<T>? current = first;
+            last = first;
 
             while (current != null)
             {
@@ -211,6 +217,15 @@ namespace DynamicStructuresLab
                 }
 
                 current = current.Next;
+            }
+
+            if (previous == null)
+            {
+                last = null;
+            }
+            else if (previous.Next == null)
+            {
+                last = previous;
             }
 
             return isRemoved;
@@ -391,7 +406,77 @@ namespace DynamicStructuresLab
             firstCurrent.Next = secondCurrent.Next;
             secondCurrent.Next = node;
 
+            if (firstCurrent.Next == null)
+            {
+                last = firstCurrent;
+            }
+            else if (secondCurrent.Next == null)
+            {
+                last = secondCurrent;
+            }
+
             return true;
+        }
+
+        public bool DuplicateAfter(T target)
+        {
+            Node<T>? current = first;
+            CustomLinkedList<T> duplicated = [];
+
+            while (current != null)
+            {
+                if (current.Data!.Equals(target))
+                {
+                    foreach (T data in this)
+                    {
+                        duplicated.Add(data);
+                    }
+
+                    Node<T>? node = current.Next;
+                    current.Next = duplicated.first;
+                    duplicated.last!.Next = node;
+
+                    if (current == last)
+                    {
+                        last = duplicated.last;
+                    }
+
+                    count += duplicated.count;
+
+                    return true;
+                }
+
+                current = current.Next;
+            }
+
+            return false;
+        }
+
+        public void AddInOrder(T data)
+        {
+            if (first == null || ((IComparable<T>)data!).CompareTo(first.Data) <= 0)
+            {
+                AddFirst(data);
+                return;
+            }
+
+            Node<T> node = new(data);
+            Node<T> current = first;
+
+            while (current.Next != null && ((IComparable<T>)current.Next.Data!).CompareTo(data) < 0)
+            {
+                current = current.Next;
+            }
+
+            node.Next = current.Next;
+            current.Next = node;
+
+            if (node.Next == null)
+            {
+                last = node;
+            }
+
+            count++;
         }
 
         public void Clear()
