@@ -2,13 +2,13 @@
 {
     public class QueueManager
     {
-        private QueueList queueList;
-        private QueueStandard queueStandard;
+        private CustomQueue _customQueue;
+        private QueueStandard _queueStandard;
 
         public QueueManager()
         {
-            queueList = new QueueList();
-            queueStandard = new QueueStandard();
+            _customQueue = new CustomQueue();
+            _queueStandard = new QueueStandard();
         }
 
         public void ProcessCommands(string[] operations)
@@ -44,8 +44,8 @@
             string[] parts = operation.Split(',');
             for (int i = 1; i < parts.Length; i++)
             {
-                queueList.Enqueue(parts[i]);
-                queueStandard.Enqueue(parts[i]);
+                _customQueue.Enqueue(parts[i]);
+                _queueStandard.Enqueue(parts[i]);
             }
         }
 
@@ -53,8 +53,8 @@
         {
             try
             {
-                Console.WriteLine("Удалён из списка: " + queueList.Dequeue());
-                Console.WriteLine("Удалён из стандартной очереди: " + queueStandard.Dequeue());
+                Console.WriteLine("Удалён из списка: " + _customQueue.Dequeue());
+                Console.WriteLine("Удалён из стандартной очереди: " + _queueStandard.Dequeue());
             }
             catch (InvalidOperationException e)
             {
@@ -66,8 +66,8 @@
         {
             try
             {
-                Console.WriteLine("Начало списка: " + queueList.Peek());
-                Console.WriteLine("Начало стандартной очереди: " + queueStandard.Peek());
+                Console.WriteLine("Начало списка: " + _customQueue.Peek());
+                Console.WriteLine("Начало стандартной очереди: " + _queueStandard.Peek());
             }
             catch (InvalidOperationException e)
             {
@@ -77,16 +77,16 @@
 
         private void CheckIfEmpty()
         {
-            Console.WriteLine("Список пуст: " + queueList.IsEmpty());
-            Console.WriteLine("Стандартная очередь пуста: " + queueStandard.IsEmpty());
+            Console.WriteLine("Список пуст: " + _customQueue.IsEmpty());
+            Console.WriteLine("Стандартная очередь пуста: " + _queueStandard.IsEmpty());
         }
 
         private void PrintItems()
         {
             Console.WriteLine("Элементы списка:");
-            queueList.Print();
+            _customQueue.Print();
             Console.WriteLine("Элементы стандартной очереди:");
-            queueStandard.Print();
+            _queueStandard.Print();
         }
     }
 }
