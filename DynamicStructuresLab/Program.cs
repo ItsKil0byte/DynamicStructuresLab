@@ -533,6 +533,7 @@ namespace DynamicStructuresLab
                 stack.SetDefaulStack();
                 stackTypeMessage = "Работа со стандартным стеком";
             }
+            
             while (true)
             {
                 Console.Clear();
@@ -572,6 +573,9 @@ namespace DynamicStructuresLab
                         break;
                     case 6:
                         stack.Count();
+                        break;
+                    case 7:
+
                         break;
                     case 0:
                         return;

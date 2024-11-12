@@ -42,7 +42,22 @@ namespace DynamicStructuresLab
             count++;
         }
 
-        public bool Remove(T data)
+        public void RemoveFirst()
+        {
+            if (IsEmpty)
+            {
+                throw new InvalidOperationException("Linked list is empty.");
+            }
+            first = first!.Next;
+
+            if (first == null)
+            {
+                last = null;
+            }
+            count--;
+        }
+
+            public bool Remove(T data)
         {
             Node<T>? current = first;
             Node<T>? previous = null;

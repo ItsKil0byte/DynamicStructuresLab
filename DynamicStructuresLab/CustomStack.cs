@@ -9,34 +9,31 @@ namespace DynamicStructuresLab
 {
     public class CustomStack<T> : IEnumerable<T>, IStack<T>
     {
-        Node<T>? head;
+        CustomLinkedList<T> stack = new CustomLinkedList<T>();
         int count;
 
-        public bool IsEmpty{ get { return count == 0; } }
-        public int Count { get { return count; } }
+        public bool IsEmpty{ get { return stack.IsEmpty ; } }
+        public int Count { get { return stack.Count; } }
 
         public void Push(T item)
         {
-            Node<T> node = new Node<T>(item);
-            node.Next = head;
-            head = node;
-            count++;
+            stack.AddFirst(item);
         }
         public T Pop()
         {
             if (IsEmpty)
                 throw new InvalidOperationException("Stack is empty");
-            Node<T>? temp = head;
-            head = head!.Next;
-            count--;
-            return temp!.Data;
+            T res = stack.First<T>();
+            stack.RemoveFirst();
+
+            return res;
         }
 
         public T Peek()
         {
             if (IsEmpty)
                 throw new InvalidOperationException("Stack is empty");
-            return head!.Data;
+            return stack.First<T>();
         }
 
         public void Print()
@@ -55,11 +52,9 @@ namespace DynamicStructuresLab
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            Node<T>? current = head;
-            while (current != null)
+            foreach(var item in stack)
             {
-                yield return current.Data;
-                current = current.Next;
+                yield return item;
             }
         }
     }
