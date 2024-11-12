@@ -11,6 +11,8 @@ namespace DynamicStructuresLab
         void Push(T item);
         T Pop();
         T Peek();
+
+        void Print();
         bool IsEmpty { get; }
         int Count { get; }
     }

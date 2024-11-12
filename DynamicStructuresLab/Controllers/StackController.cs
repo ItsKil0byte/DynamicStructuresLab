@@ -19,27 +19,52 @@ namespace DynamicStructuresLab.Controllers
             this.stack = new StackWrapper<T>(); 
         }
 
+        private void WaitUser()
+        {
+            Console.WriteLine("Нажмите Enter, что бы продолжить");
+            Console.ReadKey();
+        }
+
         public void Push(T item)
         {
             this.stack?.Push(item);
             Console.WriteLine($"Добавили в стек: {item}");
+            WaitUser();
         }
 
         public void Pop()
         {
-            T item = this.stack.Pop();
-            Console.WriteLine($"Вытащили из стека: {item}");
+            try
+            {
+                T item = this.stack.Pop();
+                Console.WriteLine($"Вытащили из стека: {item}");
+            } 
+            catch (InvalidOperationException e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            WaitUser();
         }
 
         public void Peek()
         {
-            T item = this.stack.Peek();
-            Console.WriteLine($"Верхний элемент в стеке: {item}");
+            try
+            {
+                T item = this.stack.Peek();
+                Console.WriteLine($"Верхний элемент в стеке: {item}");
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            WaitUser();
         }
 
         public void Print()
         {
             this.stack.Print();
+            WaitUser();
         }
 
         public void IsEmpty()
@@ -53,11 +78,13 @@ namespace DynamicStructuresLab.Controllers
             {
                 Console.WriteLine("Стек не пуст");
             }
+            WaitUser();
         }
 
         public void Count()
         {
             Console.WriteLine($"Размер стека: {this.stack.Count}");
+            WaitUser();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace DynamicStructuresLab
             }
         }
 
-        int GetUserChoice()
+        static int GetUserChoice()
         {
             if (!int.TryParse(Console.ReadLine(), out int choice))
             {
@@ -546,7 +546,36 @@ namespace DynamicStructuresLab
                 Console.WriteLine("7. Обработать файл input.txt.");
                 Console.WriteLine("0. Вернуться в меню очереди.\n");
                 Console.Write("Введите номер: ");
-
+                
+                int choice = GetUserChoice();
+                if (choice == -1)
+                {
+                    continue;
+                }
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите элемент для вставки: ");
+                        stack.Push(Console.ReadLine());
+                        break;
+                    case 2:
+                        stack.Pop();
+                        break;
+                    case 3:
+                        stack.Peek();
+                        break;
+                    case 4:
+                        stack.IsEmpty();
+                        break;
+                    case 5:
+                        stack.Print();
+                        break;
+                    case 6:
+                        stack.Count();
+                        break;
+                    case 0:
+                        return;
+                }
             }
         }
 
@@ -566,7 +595,7 @@ namespace DynamicStructuresLab
                 Console.WriteLine("4. Проверка на пустоту.");
                 Console.WriteLine("5. Печать всех элементов.");
                 Console.WriteLine("6. Обработать файл input.txt.");
-                Console.WriteLine("0. Вернуться в меню очереди.\n");
+                Console.WriteLine("0. Вернуться в меню стека.\n");
                 Console.Write("Введите номер: ");
 
                 if (!int.TryParse(Console.ReadLine(), out int choice))

@@ -42,7 +42,7 @@ namespace DynamicStructuresLab
         public void Print()
         {
             Console.WriteLine("Содержимое стека: ");
-            foreach (var item in _stack)
+            foreach (var item in this)
             {
                 Console.WriteLine($"{item}");
             }

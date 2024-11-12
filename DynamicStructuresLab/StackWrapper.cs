@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DynamicStructuresLab
 {
-    internal class StackWrapper<T> : IStack<T>
+    public class StackWrapper<T> : IStack<T>
     {
         private readonly Stack<T> _stack;
 
