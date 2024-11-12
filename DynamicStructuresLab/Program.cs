@@ -553,6 +553,7 @@
                         string itemToAdd = Console.ReadLine();
                         queue.Enqueue(itemToAdd);
                         Console.WriteLine($"Элемент '{itemToAdd}' добавлен в очередь.");
+                        Console.ReadKey();
                         break;
                     case 2:
                         try
@@ -564,6 +565,7 @@
                         {
                             Console.WriteLine(e.Message);
                         }
+                        Console.ReadKey();
                         break;
                     case 3:
                         try
@@ -575,13 +577,16 @@
                         {
                             Console.WriteLine(e.Message);
                         }
+                        Console.ReadKey();
                         break;
                     case 4:
                         Console.WriteLine($"Очередь пуста: {queue.IsEmpty()}");
+                        Console.ReadKey();
                         break;
                     case 5:
                         Console.WriteLine("Элементы очереди:");
                         queue.Print();
+                        Console.ReadKey();
                         break;
                     case 6:
                         Console.Write("Введите путь к файлу: ");
@@ -634,6 +639,7 @@
                         string itemToAdd = Console.ReadLine();
                         queue.Enqueue(itemToAdd);
                         Console.WriteLine($"Элемент '{itemToAdd}' добавлен в очередь.");
+                        Console.ReadKey();
                         break;
                     case 2:
                         try
@@ -645,6 +651,7 @@
                         {
                             Console.WriteLine(e.Message);
                         }
+                        Console.ReadKey();
                         break;
                     case 3:
                         try
@@ -656,19 +663,21 @@
                         {
                             Console.WriteLine(e.Message);
                         }
+                        Console.ReadKey();
                         break;
                     case 4:
                         Console.WriteLine($"Очередь пуста: {queue.IsEmpty()}");
+                        Console.ReadKey();
                         break;
                     case 5:
                         Console.WriteLine("Элементы очереди:");
                         queue.Print();
+                        Console.ReadKey();
                         break;
                     case 6:
                         Console.Write("Введите путь к файлу: ");
                         string filePath = Console.ReadLine();
                         fileProcessor.ProcessFile(filePath, queue);
-                        Console.ReadKey();
                         break;
                     case 0:
                         return;

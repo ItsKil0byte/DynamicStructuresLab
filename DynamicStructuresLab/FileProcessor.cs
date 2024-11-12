@@ -89,7 +89,7 @@
 
         private void PrintItems(IQueue queue)
         {
-            Console.Write("Элементы очереди:");
+            Console.Write("Элементы очереди: ");
             queue.Print();
         }
     }
