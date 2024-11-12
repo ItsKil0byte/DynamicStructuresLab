@@ -1,6 +1,6 @@
 ﻿namespace DynamicStructuresLab
 {
-    public class CustomQueue
+    public class CustomQueue : IQueue
     {
         private Node<string>? head;
         private Node<string>? tail;
@@ -28,7 +28,7 @@
         public string Dequeue()
         {
             if (head == null)
-                throw new InvalidOperationException("Очередь пуста.");
+                throw new InvalidOperationException("Удалить элемент нельзя, потому что очередь пуста.");
             string item = head.Data;
             head = head.Next;
             if (head == null)
@@ -46,7 +46,7 @@
         public string Peek()
         {
             if (head == null)
-                throw new InvalidOperationException("Очередь пуста.");
+                throw new InvalidOperationException("Начала очереди нет, потому что очередь пуста.");
             return head.Data;
         }
 

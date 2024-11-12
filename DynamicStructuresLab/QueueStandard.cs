@@ -1,6 +1,6 @@
 ﻿namespace DynamicStructuresLab
 {
-    public class QueueStandard
+    public class QueueStandard : IQueue
     {
         private Queue<string> _queue;
 
@@ -17,7 +17,7 @@
         public string Dequeue()
         {
             if (_queue.Count == 0)
-                throw new InvalidOperationException("Очередь пуста.");
+                throw new InvalidOperationException("Удалить элемент нельзя, потому что очередь пуста.");
             return _queue.Dequeue();
         }
 
@@ -29,7 +29,7 @@
         public string Peek()
         {
             if (_queue.Count == 0)
-                throw new InvalidOperationException("Очередь пуста.");
+                throw new InvalidOperationException("Начала очереди нет, потому что очередь пуста.");
             return _queue.Peek();
         }
 

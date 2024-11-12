@@ -518,22 +518,169 @@
                 // ...
             }
         }
+
+        //Не трогать кейсы 1-5. Только 6 или 0. Сделал только общую обработку файла для работы с отчётом.
         static void StandardQueueMenu()
         {
+            QueueStandard queue = new QueueStandard();
+            FileProcessor fileProcessor = new FileProcessor(); 
+
             while (true)
             {
-                // ...
+                Console.Clear();
+                Console.WriteLine("Работа со Стандартной Очередью:\n");
+                Console.WriteLine("1. Вставка элемента.");
+                Console.WriteLine("2. Удаление элемента.");
+                Console.WriteLine("3. Просмотр начала очереди.");
+                Console.WriteLine("4. Проверка на пустоту.");
+                Console.WriteLine("5. Печать всех элементов.");
+                Console.WriteLine("6. Обработать файл input.txt.");
+                Console.WriteLine("0. Вернуться в меню очереди.\n");
+                Console.Write("Введите номер: ");
+
+                if (!int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.\n");
+                    Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите элемент для вставки: ");
+                        string itemToAdd = Console.ReadLine();
+                        queue.Enqueue(itemToAdd);
+                        Console.WriteLine($"Элемент '{itemToAdd}' добавлен в очередь.");
+                        break;
+                    case 2:
+                        try
+                        {
+                            string removedItem = queue.Dequeue();
+                            Console.WriteLine($"Удалён элемент: {removedItem}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        break;
+                    case 3:
+                        try
+                        {
+                            string peekedItem = queue.Peek();
+                            Console.WriteLine($"Начало очереди: {peekedItem}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine($"Очередь пуста: {queue.IsEmpty()}");
+                        break;
+                    case 5:
+                        Console.WriteLine("Элементы очереди:");
+                        queue.Print();
+                        break;
+                    case 6:
+                        Console.Write("Введите путь к файлу: ");
+                        string filePath = Console.ReadLine();
+                        fileProcessor.ProcessFile(filePath, queue);
+                        Console.ReadKey();
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        Console.WriteLine("\nОшибка: опция в меню отсутствует. Введите корректное число.\n");
+                        Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
+                        Console.ReadKey();
+                        break;
+                }
             }
         }
-
+        
+        //Не трогать кейсы 1-5. Только 6 или 0. Сделал только общую обработку файла для работы с отчётом.
         static void CustomQueueMenu()
         {
+            CustomQueue queue = new CustomQueue();
+            FileProcessor fileProcessor = new FileProcessor();
+
             while (true)
             {
-                // ...
+                Console.Clear();
+                Console.WriteLine("Работа с Самодельной Очередью:\n");
+                Console.WriteLine("1. Вставка элемента.");
+                Console.WriteLine("2. Удаление элемента.");
+                Console.WriteLine("3. Просмотр начала очереди.");
+                Console.WriteLine("4. Проверка на пустоту.");
+                Console.WriteLine("5. Печать всех элементов.");
+                Console.WriteLine("6. Обработать файл input.txt.");
+                Console.WriteLine("0. Вернуться в меню очереди.\n");
+                Console.Write("Введите номер: ");
+
+                if (!int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.\n");
+                    Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите элемент для вставки: ");
+                        string itemToAdd = Console.ReadLine();
+                        queue.Enqueue(itemToAdd);
+                        Console.WriteLine($"Элемент '{itemToAdd}' добавлен в очередь.");
+                        break;
+                    case 2:
+                        try
+                        {
+                            string removedItem = queue.Dequeue();
+                            Console.WriteLine($"Удалён элемент: {removedItem}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        break;
+                    case 3:
+                        try
+                        {
+                            string peekedItem = queue.Peek();
+                            Console.WriteLine($"Начало очереди: {peekedItem}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine($"Очередь пуста: {queue.IsEmpty()}");
+                        break;
+                    case 5:
+                        Console.WriteLine("Элементы очереди:");
+                        queue.Print();
+                        break;
+                    case 6:
+                        Console.Write("Введите путь к файлу: ");
+                        string filePath = Console.ReadLine();
+                        fileProcessor.ProcessFile(filePath, queue);
+                        Console.ReadKey();
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        Console.WriteLine("\nОшибка: опция в меню отсутствует. Введите корректное число.\n");
+                        Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
+                        Console.ReadKey();
+                        break;
+                }
             }
         }
-
+        
         static void TreeMenu()
         {
             while (true)
