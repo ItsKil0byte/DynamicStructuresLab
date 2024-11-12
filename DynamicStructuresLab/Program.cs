@@ -518,8 +518,7 @@
                 // ...
             }
         }
-
-        //Не трогать кейсы 1-5. Только 6 или 0. Сделал только общую обработку файла для работы с отчётом.
+        
         static void StandardQueueMenu()
         {
             QueueStandard queue = new QueueStandard();
@@ -605,7 +604,6 @@
             }
         }
         
-        //Не трогать кейсы 1-5. Только 6 или 0. Сделал только общую обработку файла для работы с отчётом.
         static void CustomQueueMenu()
         {
             CustomQueue queue = new CustomQueue();
