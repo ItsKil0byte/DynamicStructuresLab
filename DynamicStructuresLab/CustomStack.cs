@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DynamicStructuresLab
 {
-    public class CustomStack<T> : IEnumerable<T>
+    public class CustomStack<T> : IEnumerable<T>, IStack<T>
     {
         Node<T>? head;
         int count;
@@ -38,6 +38,16 @@ namespace DynamicStructuresLab
                 throw new InvalidOperationException("Stack is empty");
             return head!.Data;
         }
+
+        public void Print()
+        {
+            Console.WriteLine("Содержимое стека: ");
+            foreach (var item in _stack)
+            {
+                Console.WriteLine($"{item}");
+            }
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)this).GetEnumerator();

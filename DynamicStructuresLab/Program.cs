@@ -1,4 +1,6 @@
-﻿namespace DynamicStructuresLab
+﻿using DynamicStructuresLab.Controllers;
+
+namespace DynamicStructuresLab
 {
     internal class Program
     {
@@ -51,6 +53,18 @@
             }
         }
 
+        int GetUserChoice()
+        {
+            if (!int.TryParse(Console.ReadLine(), out int choice))
+            {
+                Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.\n");
+                Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
+                Console.ReadKey();
+                return -1;
+            }
+            return choice;
+        }
+
         static void StackMenu()
         {
             while (true)
@@ -73,10 +87,10 @@
                 switch (stackChoice)
                 {
                     case 1:
-                        CustomStackMenu();
+                        StackMenu(true);
                         break;
                     case 2:
-                        StandardStackMenu();
+                        StackMenu(false);
                         break;
                     case 0:
                         return;
@@ -166,7 +180,7 @@
 
                 Console.WriteLine();
 
-                switch (listChoice) // Лютый хардкод, убейте меня.
+                switch (listChoice) // Лютый хардкод, убейте меня. Это пиздец... Боги такого не простят
                 {
                     case 1:
                         if (list.IsEmpty)
@@ -503,21 +517,39 @@
             }
         }
 
-        static void CustomStackMenu()
+        static void StackMenu(bool useCustomStack)
         {
+            StackController<string> stack = new StackController<string>();
+            FileProcessor fileProcessor = new FileProcessor();
+            string stackTypeMessage;
+
+            if (useCustomStack)
+            {
+                stack.SetCustomStack();
+                stackTypeMessage = "Работа с самодельным стеком";
+            }
+            else
+            {
+                stack.SetDefaulStack();
+                stackTypeMessage = "Работа со стандартным стеком";
+            }
             while (true)
             {
-                // ...
+                Console.Clear();
+                Console.WriteLine($"{stackTypeMessage}:\n");
+                Console.WriteLine("1. Добавление элемента.");
+                Console.WriteLine("2. Извлечение элемента.");
+                Console.WriteLine("3. Просмотр верхнего элемента.");
+                Console.WriteLine("4. Проверка на пустоту.");
+                Console.WriteLine("5. Печать всех элементов.");
+                Console.WriteLine("6. Печать количества элементов в стеке.");
+                Console.WriteLine("7. Обработать файл input.txt.");
+                Console.WriteLine("0. Вернуться в меню очереди.\n");
+                Console.Write("Введите номер: ");
+
             }
         }
 
-        static void StandardStackMenu()
-        {
-            while (true)
-            {
-                // ...
-            }
-        }
         
         static void StandardQueueMenu()
         {
