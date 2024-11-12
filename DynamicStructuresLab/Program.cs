@@ -7,20 +7,19 @@
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Выберите структуру данных для работы:");
-                Console.WriteLine();
-                Console.WriteLine("1. Стек");
-                Console.WriteLine("2. Очередь");
-                Console.WriteLine("3. Связный список");
-                Console.WriteLine("4. Дерево");
-                Console.WriteLine("0. Выход");
-                Console.WriteLine();
+                Console.WriteLine("Выберите структуру данных для работы:\n");
+
+                Console.WriteLine("1. Стек.");
+                Console.WriteLine("2. Очередь.");
+                Console.WriteLine("3. Связный список.");
+                Console.WriteLine("4. Дерево.");
+                Console.WriteLine("0. Выход.\n");
+
                 Console.Write("Введите номер: ");
 
                 if (!int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Ошибка: введено некорректное значение. Пожалуйста, введите число.");
+                    Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.\n");
                     Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                     Console.ReadKey();
                     continue;
@@ -41,12 +40,10 @@
                         TreeMenu();
                         break;
                     case 0:
-                        Console.WriteLine();
-                        Console.WriteLine("Завершение работы...");
+                        Console.WriteLine("\nЗавершение работы...");
                         return;
                     default:
-                        Console.WriteLine();
-                        Console.WriteLine("Ошибка: опция в меню отсутсвует. Введите корректное число.");
+                        Console.WriteLine("\nОшибка: опция в меню отсутсвует. Введите корректное число.\n");
                         Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                         Console.ReadKey();
                         break;
@@ -59,18 +56,15 @@
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Работа со Стеком:");
-                Console.WriteLine();
-                Console.WriteLine("1. Использовать самодельный стек");
-                Console.WriteLine("2. Использовать стандартный стек");
-                Console.WriteLine("0. Вернуться в главное меню");
-                Console.WriteLine();
+                Console.WriteLine("Работа со Стеком:\n");
+                Console.WriteLine("1. Использовать самодельный стек.");
+                Console.WriteLine("2. Использовать стандартный стек.");
+                Console.WriteLine("0. Вернуться в главное меню.\n");
                 Console.Write("Введите номер: ");
 
                 if (!int.TryParse(Console.ReadLine(), out int stackChoice))
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Ошибка: введено некорректное значение. Пожалуйста, введите число.");
+                    Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.");
                     Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                     Console.ReadKey();
                     continue;
@@ -87,8 +81,7 @@
                     case 0:
                         return;
                     default:
-                        Console.WriteLine();
-                        Console.WriteLine("Ошибка: опция в меню отсутсвует. Введите корректное число.");
+                        Console.WriteLine("\nОшибка: опция в меню отсутсвует. Введите корректное число.\n");
                         Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                         Console.ReadKey();
                         break;
@@ -101,18 +94,15 @@
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Работа с Очередью:");
-                Console.WriteLine();
-                Console.WriteLine("1. Использовать самодельную очередь");
-                Console.WriteLine("2. Использовать стандартную очередь");
-                Console.WriteLine("0. Вернуться в главное меню");
-                Console.WriteLine();
+                Console.WriteLine("Работа с Очередью:\n");
+                Console.WriteLine("1. Использовать самодельную очередь.");
+                Console.WriteLine("2. Использовать стандартную очередь.");
+                Console.WriteLine("0. Вернуться в главное меню.\n");
                 Console.Write("Введите номер: ");
 
                 if (!int.TryParse(Console.ReadLine(), out int queueChoice))
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Ошибка: введено некорректное значение. Пожалуйста, введите число.");
+                    Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.\n");
                     Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                     Console.ReadKey();
                     continue;
@@ -129,8 +119,7 @@
                     case 0:
                         return;
                     default:
-                        Console.WriteLine();
-                        Console.WriteLine("Ошибка: опция в меню отсутсвует. Введите корректное число.");
+                        Console.WriteLine("\nОшибка: опция в меню отсутсвует. Введите корректное число.\n");
                         Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                         Console.ReadKey();
                         break;
@@ -145,35 +134,31 @@
             while (true)
             {
                 Console.Clear();
-                Console.Write("Работа со Связным списком: ");
+                Console.Write("Работа со Связным списком -> ");
                 list.Print();
 
-                Console.WriteLine();
-                Console.WriteLine("Выберите алгоритм:");
-                Console.WriteLine();
-
-                Console.WriteLine("1. Перевернуть список");
-                Console.WriteLine("2. Перенос первого элемента в конец списка");
-                Console.WriteLine("3. Перенос последнего элемента в начало списка");
-                Console.WriteLine("4. Подсчет уникальных элементов");
-                Console.WriteLine("5. Удаление неуникальных элементов");
-                Console.WriteLine("6. Вставка списка самого в себя после x");
-                Console.WriteLine("7. Вставка элемента E, сохраняя упорядоченность");
-                Console.WriteLine("8. Удаление всех элементов E");
-                Console.WriteLine("9. Вставка F перед первым E");
-                Console.WriteLine("10. Дописать список E к L");
-                Console.WriteLine("11. Разделить список по x");
-                Console.WriteLine("12. Удвоить список");
-                Console.WriteLine("13. Поменять местами два элемента");
-                Console.WriteLine("0. Вернуться в главное меню");
-
+                Console.WriteLine("\nВыберите алгоритм:\n");
+                Console.WriteLine("1. Перевернуть список.");
+                Console.WriteLine("2. Перенос первого элемента в конец списка.");
+                Console.WriteLine("3. Перенос последнего элемента в начало списка.");
+                Console.WriteLine("4. Подсчет уникальных элементов.");
+                Console.WriteLine("5. Удаление неуникальных элементов.");
+                Console.WriteLine("6. Вставка списка самого в себя после x.");
+                Console.WriteLine("7. Вставка элемента E, сохраняя упорядоченность.");
+                Console.WriteLine("8. Удаление всех элементов E.");
+                Console.WriteLine("9. Вставка F перед первым E.");
+                Console.WriteLine("10. Дописать список E к текущему списку.");
+                Console.WriteLine("11. Разделить список по X.");
+                Console.WriteLine("12. Удвоить список.");
+                Console.WriteLine("13. Поменять местами два элемента.");
+                Console.WriteLine("0. Вернуться в главное меню.");
                 Console.WriteLine();
                 Console.Write("Введите номер: ");
 
                 if (!int.TryParse(Console.ReadLine(), out int listChoice))
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Ошибка: введено некорректное значение. Пожалуйста, введите число.");
+                    Console.WriteLine("\nОшибка: введено некорректное значение. Пожалуйста, введите число.\n");
                     Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
                     Console.ReadKey();
                     continue;
@@ -181,9 +166,15 @@
 
                 Console.WriteLine();
 
-                switch (listChoice)
+                switch (listChoice) // Лютый хардкод, убейте меня.
                 {
                     case 1:
+                        if (list.IsEmpty)
+                        {
+                            Console.WriteLine("Список пуст!");
+                            break;
+                        }
+
                         Console.WriteLine("Переворачиваем список...");
                         list.Flip();
 
@@ -192,6 +183,12 @@
 
                         break;
                     case 2:
+                        if (list.IsEmpty)
+                        {
+                            Console.WriteLine("Список пуст!");
+                            break;
+                        }
+
                         Console.WriteLine("Переносим первый элемент в конец...");
                         list.MoveFirstToLast();
 
@@ -200,6 +197,12 @@
 
                         break;
                     case 3:
+                        if (list.IsEmpty)
+                        {
+                            Console.WriteLine("Список пуст!");
+                            break;
+                        }
+
                         Console.WriteLine("Переносим последний элемент в начало...");
                         list.MoveLastToFirst();
 
@@ -208,10 +211,23 @@
 
                         break;
                     case 4:
+                        if (list.IsEmpty)
+                        {
+                            Console.WriteLine("Список пуст!");
+                            break;
+                        }
+
                         Console.WriteLine("Подсчитываем уникальные элементы...");
                         Console.WriteLine($"Результат = {list.CountUnique()}");
+
                         break;
                     case 5:
+                        if (list.IsEmpty)
+                        {
+                            Console.WriteLine("Список пустой!");
+                            break;
+                        }
+
                         Console.WriteLine("Удаляем неуникальные элементы...");
                         list.RemoveNonUnique();
 
@@ -220,30 +236,261 @@
 
                         break;
                     case 6:
-                        Console.Write("Введите X: ");
-                        string? input = Console.ReadLine();
-
-                        if (int.TryParse(input, out int targetNumber))
                         {
-                            if (list.DuplicateAfter(targetNumber))
+                            if (list.IsEmpty)
                             {
-                                Console.WriteLine("X найден, вставляем список...");
+                                Console.WriteLine("Список пуст!");
+                                break;
+                            }
+
+                            Console.Write("Введите X: ");
+                            string? input = Console.ReadLine();
+
+                            Console.WriteLine();
+
+                            if (int.TryParse(input, out int x))
+                            {
+                                if (list.DuplicateAfter(x))
+                                {
+                                    Console.WriteLine($"{x} найден, вставляем список...");
+                                    Console.Write("Результат = ");
+                                    list.Print();
+
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{x} не был найден в списке.");
+                                    break;
+                                }
                             }
                             else
                             {
-                                Console.WriteLine("Х не был найден в списке.");
+                                Console.WriteLine("Ошибка: необходимо ввести числовое значение.");
+                                break;
                             }
                         }
-                        else
+                    case 7:
                         {
-                            Console.WriteLine("Ожидалось число.");
+                            Console.Write("Введите Е: ");
+                            string? input = Console.ReadLine();
+
+                            Console.WriteLine();
+
+                            if (int.TryParse(input, out int e))
+                            {
+                                Console.WriteLine($"Вставляем {e} в нужное место...");
+                                list.AddInOrder(e);
+                                Console.Write("Результат = ");
+                                list.Print();
+
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ошибка: необходимо ввести числовое значение.");
+
+                                break;
+                            }
                         }
+                    case 8:
+                        {
+                            if (list.IsEmpty)
+                            {
+                                Console.WriteLine("Список пуст!");
+                                break;
+                            }
+
+                            Console.Write("Введите E: ");
+                            string? input = Console.ReadLine();
+
+                            Console.WriteLine();
+
+                            if (int.TryParse(input, out int e))
+                            {
+                                if (list.RemoveAll(e))
+                                {
+                                    Console.WriteLine($"Удаляем все вхождения {e}...");
+                                    Console.Write("Результат = ");
+                                    list.Print();
+
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Нечего удалять.");
+
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ошибка: необходимо ввести числовое значение.");
+
+                                break;
+                            }
+                        }
+                    case 9:
+                        {
+                            if (list.IsEmpty)
+                            {
+                                Console.WriteLine("Список пуст!");
+                                break;
+                            }
+
+                            Console.Write("Введите значения F и E через пробел (например, '5 10'): ");
+                            string? input = Console.ReadLine();
+
+                            string[] parts = input!.Split(' ');
+
+                            Console.WriteLine();
+
+                            if (parts.Length == 2 && int.TryParse(parts[1], out int e) && int.TryParse(parts[0], out int f))
+                            {
+                                if (list.AddBefore(e, f))
+                                {
+                                    Console.WriteLine($"Вставляяем {f} перед первым вхождением {e}...");
+                                    Console.Write("Результат = ");
+                                    list.Print();
+
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Значение {e} не найдено в списке.");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ошибка: необходимо ввести два числовых значения, разделённых пробелом.");
+                                break;
+                            }
+                        }
+                    case 10:
+                        {
+                            Console.Write("Введите значения для E через пробел (например, '1 2 3 ...'): ");
+                            string? input = Console.ReadLine();
+
+                            string[] parts = input!.Split(' ');
+                            CustomLinkedList<int> newList = [];
+                            bool inputCorrect = true;
+
+                            Console.WriteLine();
+
+                            foreach (string part in parts)
+                            {
+                                if (int.TryParse(part, out int number))
+                                {
+                                    newList.Add(number);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ошибка: необходимо ввести числовые значения через пробел");
+                                    inputCorrect = false;
+                                    break;
+                                }
+                            }
+
+                            if (!inputCorrect)
+                            {
+                                break;
+                            }
+
+                            Console.WriteLine($"Дописываем новый список к исходному...");
+                            list.AddLinkedList(newList);
+
+                            Console.Write("Результат = ");
+                            list.Print();
+
+                            break;
+                        }
+                    case 11:
+                        {
+                            if (list.IsEmpty)
+                            {
+                                Console.WriteLine("Список пуст!");
+                                break;
+                            }
+
+                            Console.Write("Введите X: ");
+                            string? input = Console.ReadLine();
+
+                            Console.WriteLine();
+
+                            if (int.TryParse(input, out int x))
+                            {
+                                CustomLinkedList<int> newList = [];
+
+                                Console.WriteLine($"Разделяем список по {x}...");
+                                Console.Write("Старый список = ");
+                                list.Print();
+
+                                newList = list.Split(x);
+                                Console.Write("Новый список = ");
+                                newList.Print();
+
+                                list = newList;
+
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ошибка: необходимо ввести числовое значение.");
+                                break;
+                            }
+                        }
+                    case 12:
+                        if (list.IsEmpty)
+                        {
+                            Console.WriteLine("Список пуст!");
+                            break;
+                        }
+
+                        Console.WriteLine("Удваиваем список...");
+                        list.Duplicate();
 
                         Console.Write("Результат = ");
                         list.Print();
 
                         break;
-                    // NOTE: дописать.
+                    case 13:
+                        {
+                            if (list.IsEmpty)
+                            {
+                                Console.WriteLine("Список пуст!");
+                                break;
+                            }
+
+                            Console.Write("Введите значения два числа через пробел (например, '5 10'): ");
+                            string? input = Console.ReadLine();
+
+                            string[] parts = input!.Split(' ');
+
+                            Console.WriteLine();
+
+                            if (parts.Length == 2 && int.TryParse(parts[1], out int x) && int.TryParse(parts[0], out int y))
+                            {
+                                if (list.Swap(x, y))
+                                {
+                                    Console.WriteLine($"Меням местами {x} и {y}...");
+                                    Console.Write("Результат = ");
+                                    list.Print();
+
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Пара значений не найдена в списке.");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ошибка: необходимо ввести два числовых значения, разделённых пробелом.");
+                                break;
+                            }
+                        }
                     case 0:
                         return;
                     default:
@@ -251,8 +498,7 @@
                         break;
                 }
 
-                Console.WriteLine();
-                Console.WriteLine("Нажмите любую клавишу, чтобы продолжить...");
+                Console.WriteLine("\nНажмите любую клавишу, чтобы продолжить...");
                 Console.ReadKey();
             }
         }
