@@ -1,4 +1,6 @@
 ﻿using DynamicStructuresLab.Controllers;
+using DynamicStructuresLab.RPN;
+
 
 namespace DynamicStructuresLab
 {
@@ -528,6 +530,7 @@ namespace DynamicStructuresLab
             StackController<string> stackController = new StackController<string>();
             FileProcessor fileProcessor = new FileProcessor();
             string stackTypeMessage;
+            string filePath;
 
             if (useCustomStack)
             {
@@ -551,6 +554,8 @@ namespace DynamicStructuresLab
                 Console.WriteLine("5. Печать всех элементов.");
                 Console.WriteLine("6. Печать количества элементов в стеке.");
                 Console.WriteLine("7. Обработать файл input.txt.");
+                Console.WriteLine("8. Вычислить выражение в постфиксной.");
+                Console.WriteLine("9. Вычислить выражение в постфиксной записи из input.txt.");
                 Console.WriteLine("0. Вернуться в меню очереди.\n");
                 Console.Write("Введите номер: ");
                 
@@ -584,11 +589,23 @@ namespace DynamicStructuresLab
                     case 7:
                         stackController.SetFromFile();
                         Console.Write("Введите путь к файлу: ");
-                        string filePath = Console.ReadLine();
+                        filePath = Console.ReadLine();
                         fileProcessor.ProcessFile(filePath, stackController);
                         stackController.SetFromConsole();
                         Console.ReadKey();
                         break;
+                    case 8:
+                        Console.WriteLine("Введмте выражение в постфиксной записи");
+                        RPNcalculator calculator = new RPNcalculator(Console.ReadLine());
+                        Console.WriteLine("Результат: " + calculator.Calculate(1, true));
+                        Console.ReadKey();
+                        break;
+                    case 9:
+                        Console.Write("Введите путь к файлу: ");
+                        filePath = Console.ReadLine();
+                        RPNcalculator fileCalculator = new RPNcalculator(File.ReadAllText(filePath));
+                        Console.WriteLine(fileCalculator.Calculate(1, true));
+
                     case 0:
                         return;
                     default:
