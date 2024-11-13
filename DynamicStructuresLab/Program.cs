@@ -785,7 +785,7 @@ namespace DynamicStructuresLab
                 Console.WriteLine("3. Напечатать дерево в строчку.");
                 Console.WriteLine("4. Напечатать дерево схемой.");
                 Console.WriteLine("5. Вывести глубину дерева.");
-                Console.WriteLine("0. Вернуться в меню очереди.\n");
+                Console.WriteLine("0. Вернуться в главное меню.\n");
                 Console.Write("Введите номер: ");
                 int userCoice = GetUserChoice();
                 string item;
@@ -812,6 +812,8 @@ namespace DynamicStructuresLab
                     case 5:
                         binaryTreeController.Depth();
                         break;
+                    case 0:
+                        return;
                     default:
                         WriteIncorrectMenuChoice();
                         break;
