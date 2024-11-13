@@ -6,24 +6,26 @@ using System.Threading.Tasks;
 
 namespace DynamicStructuresLab.Controllers
 {
-    public class StackController<T>
+    public class StackController<T> : Controller
     {
         private IStack<T>? stack;
+
+        public StackController()
+        {
+            SetDefaultStack();
+        }
+
         public void SetCustomStack()
         {
             this.stack = new CustomStack<T>();
         }
 
-        public void SetDefaulStack() 
+        public void SetDefaultStack() 
         { 
             this.stack = new StackWrapper<T>(); 
         }
 
-        private void WaitUser()
-        {
-            Console.WriteLine("Нажмите Enter, что бы продолжить");
-            Console.ReadKey();
-        }
+        
 
         public void Push(T item)
         {

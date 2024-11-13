@@ -65,6 +65,12 @@ namespace DynamicStructuresLab
             return choice;
         }
 
+        static void WriteIncorrectMenuChoice()
+        {
+            Console.WriteLine("\nОшибка: опция в меню отсутсвует. Введите корректное число.\n");
+            Console.WriteLine("Нажмите любую клавишу, чтобы попробовать снова...");
+        }
+
         static void StackMenu()
         {
             while (true)
@@ -519,18 +525,18 @@ namespace DynamicStructuresLab
 
         static void StackMenu(bool useCustomStack)
         {
-            StackController<string> stack = new StackController<string>();
+            StackController<string> stackController = new StackController<string>();
             FileProcessor fileProcessor = new FileProcessor();
             string stackTypeMessage;
 
             if (useCustomStack)
             {
-                stack.SetCustomStack();
+                stackController.SetCustomStack();
                 stackTypeMessage = "Работа с самодельным стеком";
             }
             else
             {
-                stack.SetDefaulStack();
+                stackController.SetDefaultStack();
                 stackTypeMessage = "Работа со стандартным стеком";
             }
             
@@ -557,28 +563,32 @@ namespace DynamicStructuresLab
                 {
                     case 1:
                         Console.Write("Введите элемент для вставки: ");
-                        stack.Push(Console.ReadLine());
+                        stackController.Push(Console.ReadLine());
                         break;
                     case 2:
-                        stack.Pop();
+                        stackController.Pop();
                         break;
                     case 3:
-                        stack.Peek();
+                        stackController.Peek();
                         break;
                     case 4:
-                        stack.IsEmpty();
+                        stackController.IsEmpty();
                         break;
                     case 5:
-                        stack.Print();
+                        stackController.Print();
                         break;
                     case 6:
-                        stack.Count();
+                        stackController.Count();
                         break;
                     case 7:
 
                         break;
                     case 0:
                         return;
+                    default:
+                        WriteIncorrectMenuChoice();
+                        break;
+
                 }
             }
         }
@@ -752,12 +762,54 @@ namespace DynamicStructuresLab
                 }
             }
         }
-        
+
         static void TreeMenu()
         {
+            
+            BinaryTreeController<int> binaryTreeController = new BinaryTreeController<int>();
+
+            
+            
             while (true)
             {
-                // ...
+                Console.Clear();
+                Console.WriteLine("Работа с самодельным бинарным деревом:\n");
+                Console.WriteLine("1. Добавить элемент.");
+                Console.WriteLine("2. Есть ли элемент в дереве.");
+                Console.WriteLine("3. Напечатать дерево в строчку.");
+                Console.WriteLine("4. Напечатать дерево схемой.");
+                Console.WriteLine("5. Вывести глубину дерева.");
+                Console.WriteLine("0. Вернуться в меню очереди.\n");
+                Console.Write("Введите номер: ");
+                int userCoice = GetUserChoice();
+                string item;
+                switch (userCoice)
+                {
+                    case -1:
+                        continue;
+                    case 1:
+                        Console.Write("Введите элемент для добавления: ");
+                        item = Console.ReadLine();
+                        binaryTreeController.Insert(item);
+                        break;
+                    case 2:
+                        Console.Write("Введите элемент для проверки: ");
+                        item = Console.ReadLine();
+                        binaryTreeController.Has(item);
+                        break;
+                    case 3:
+                        binaryTreeController.InOrderTraversal();
+                        break;
+                    case 4:
+                        binaryTreeController.Print();
+                        break;
+                    case 5:
+                        binaryTreeController.Depth();
+                        break;
+                    default:
+                        WriteIncorrectMenuChoice();
+                        break;
+                }
             }
         }
     }
