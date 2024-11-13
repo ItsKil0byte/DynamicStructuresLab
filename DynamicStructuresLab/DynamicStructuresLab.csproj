@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Applications\Новая папка\" />
+  </ItemGroup>
+
 </Project>

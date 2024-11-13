@@ -1,4 +1,5 @@
-﻿using DynamicStructuresLab.Controllers;
+﻿using DynamicStructuresLab.Applications;
+using DynamicStructuresLab.Controllers;
 
 namespace DynamicStructuresLab
 {
