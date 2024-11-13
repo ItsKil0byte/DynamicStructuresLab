@@ -605,7 +605,7 @@ namespace DynamicStructuresLab
                         filePath = Console.ReadLine();
                         RPNcalculator fileCalculator = new RPNcalculator(File.ReadAllText(filePath));
                         Console.WriteLine(fileCalculator.Calculate(1, true));
-
+                        break;
                     case 0:
                         return;
                     default:
