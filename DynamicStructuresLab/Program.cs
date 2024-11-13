@@ -555,6 +555,7 @@ namespace DynamicStructuresLab
                 Console.Write("Введите номер: ");
                 
                 int choice = GetUserChoice();
+
                 if (choice == -1)
                 {
                     continue;
@@ -581,7 +582,12 @@ namespace DynamicStructuresLab
                         stackController.Count();
                         break;
                     case 7:
-
+                        stackController.SetFromFile();
+                        Console.Write("Введите путь к файлу: ");
+                        string filePath = Console.ReadLine();
+                        fileProcessor.ProcessFile(filePath, stackController);
+                        stackController.SetFromConsole();
+                        Console.ReadKey();
                         break;
                     case 0:
                         return;

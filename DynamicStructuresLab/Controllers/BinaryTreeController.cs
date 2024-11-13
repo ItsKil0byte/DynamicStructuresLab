@@ -10,6 +10,8 @@ namespace DynamicStructuresLab.Controllers
         where T : IComparable<T>
     {
         public CustomBinaryTree<T> BinaryTree;
+        
+
         public BinaryTreeController()
         {
             BinaryTree = new CustomBinaryTree<T>();
@@ -27,11 +29,11 @@ namespace DynamicStructuresLab.Controllers
             Console.WriteLine("Введите элемент который хотите найти: ");
             if (this.BinaryTree.Search((T)Convert.ChangeType(item, typeof(T))))
             {
-                Console.WriteLine("Элемент находится в дереве");
+                Console.WriteLine($"Элемент {item} находится в дереве");
             }
             else
             {
-                Console.WriteLine("Элемента нет в дереве");
+                Console.WriteLine($"Элемента {item} нет в дереве");
             }
             WaitUser();
         }
